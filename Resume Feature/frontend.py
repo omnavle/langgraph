@@ -3,7 +3,7 @@ from langgraph_backend import chatbot
 from langchain_core.messages import HumanMessage, AIMessage
 import uuid
 
-# **************************************** utility functions *************************
+# utility functions 
 
 def generate_thread_id():
     thread_id = uuid.uuid4()
@@ -25,7 +25,7 @@ def load_conversation(thread_id):
     return state.values.get('messages', [])
 
 
-# **************************************** Session Setup ******************************
+# Session Setup 
 if 'message_history' not in st.session_state:
     st.session_state['message_history'] = []
 
@@ -38,7 +38,7 @@ if 'chat_threads' not in st.session_state:
 add_thread(st.session_state['thread_id'])
 
 
-# **************************************** Sidebar UI *********************************
+# Sidebar UI 
 
 st.sidebar.title('LangGraph Chatbot')
 
@@ -64,7 +64,7 @@ for thread_id in st.session_state['chat_threads'][::-1]:
         st.session_state['message_history'] = temp_messages
 
 
-# **************************************** Main UI ************************************
+# Main UI 
 
 # loading the conversation history
 for message in st.session_state['message_history']:
